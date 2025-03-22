@@ -141,3 +141,10 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('user-login')
 LOGIN_URL = reverse_lazy('user-login')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}

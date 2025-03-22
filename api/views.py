@@ -1,4 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import (
@@ -21,7 +24,12 @@ def movies(request):
         pass
 
 
-class MovieListCreateView(ListModelMixin, CreateModelMixin, GenericAPIView):
+class MovieListCreateView(ListModelMixin,
+                          CreateModelMixin,
+                          GenericAPIView):
+
+    permission_classes = (permissions.IsAuthenticated,)
+
     queryset = Movie.objects.all()
 
     def get_serializer_class(self):
