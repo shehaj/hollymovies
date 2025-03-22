@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if perms.viewer.add_movie %}
+    <h1>Welcome to HollyMovies! You are able to add movies!</h1>
+    {% else %}
+    <h1>Welcome to HollyMovies! You are not able to add movies!</h1>
+    {% endif %}
+{% endblock %}

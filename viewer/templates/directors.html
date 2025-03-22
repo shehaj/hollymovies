@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My directors: </h1>
+    {% for director in directors %}
+            <p>{{ director }}</p>
+    {% endfor %}
+
+    <button>
+        <a href={% url 'director-create' %}>
+            Add new director
+        </a>
+    </button>
+{% endblock %}

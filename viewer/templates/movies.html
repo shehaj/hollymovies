@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My movies: </h1>
+    {% for movie in all_movies %}
+            <p>
+                {{ movie|upper }} -
+                Rating: {{ movie.rating|floatformat:1 }}
+                <a href={% url 'movie-update' movie.pk %}>Edit</a> -
+                <a href={% url 'movie-delete' movie.pk %}>Delete</a>
+            </p>
+    {% endfor %}
+    {{ user }}
+
+    <button>
+        <a href={% url 'movie-create' %}>
+            Add new movie
+        </a>
+    </button>
+{% endblock %}
